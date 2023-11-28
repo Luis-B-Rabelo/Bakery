@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/gerente/vendas_style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Gerente-Cadastro-Item</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Padaria</div>
+            <ul class="links">
+                <li><a th:href="@{funcionarios}">Funcionários</a></li>
+                <li><a th:href="@{itens}">Items</a></li>
+                <li><a th:href="@{fornecedores}">Fornecedores</a></li>
+                <li><a th:href="@{vendas}">Vendas</a></li>
+            </ul>
+            <li><a href="sair" class="action_btn"><i class='bx bx-log-out'></i> Sair</a></li>
+        </div>
+    </header>
+
+    <div>
+        <form action="#" method="post" th:action="@{register-item}" th:object="${item}">
+            <div>
+                <input type="text" th:field="*{name}" placeholder="Nome do item">
+            </div>
+            <div>
+                <textarea type="text" th:field="*{description}" placeholder="Descrição do item"></textarea>
+            </div>
+            <div>
+                <input type="text" th:field="*{unitPrice}" placeholder="Preço por unidade">
+            </div>
+            <select type="text" th:field="*{type}">
+                <option value="0" selected disabled>Escolher tipo de item:</option>
+                <option value="1">Ingrediente</option>
+                <option value="2">Revenda</option>
+                <option value="3">Próprio</option>
+            </select>
+            <select type="text" th:field="*{distributorId}">
+                <option value="0" selected disabled>Escolher fornecedor:</option>
+                <option th:each="distributor : ${distributors}" th:value="${distributor.id}" th:text="${distributor.name}"></option>
+            </select>
+
+            <div><button type="submit">Registrar</button></div>
+        </form>
+    </div>
+
+</body>
+</html>

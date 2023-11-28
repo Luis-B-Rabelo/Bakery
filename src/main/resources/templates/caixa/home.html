@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/caixa/caixa_style.css">
+
+    <script src="js/libraries/jquery-3.7.1.js"></script>
+    <script src="js/cashier.js"></script>
+
+    <title>Padaria-Caixa</title>
+</head>
+<body>
+    <header>
+        <a class="btn" href="sair">
+            <i class='bx bx-log-out'></i>
+            Sair
+        </a>
+    </header>
+    <br>
+    <form action="#" method="post" th:action="@{caixa/register-sale}" th:object="${sale}">
+        <div id="basket">
+        </div>
+
+        <select type="text" id="payment_type" th:field="*{paymentType}">
+            <option value="0" selected disabled>Escolher tipo de pagamento:</option>
+            <option value="1">Dinheiro</option>
+            <option value="2">Pix</option>
+            <option value="3">Débito</option>
+        </select>
+        <input type="text" id="total_price" value="0.00" th:field="*{totalPrice}" readonly>
+
+        <div><button type="submit">Registrar compra</button></div>
+    </form>
+    <br>
+    <br>
+    <table id="stock">
+        <tr th:each="item : ${items}" class="item" th:id="${item.id}">
+            <td th:text="${item.id}" class="id"></td>
+            <td th:text="${item.name}" class="name"></td>
+            <td th:text="${item.unitPrice}" class="price"></td>
+            <td th:text="${item.quantity}" class="quant"></td>
+        </tr>
+    </table>
+</body>
+</html>

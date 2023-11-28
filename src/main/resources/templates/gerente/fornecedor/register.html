@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/gerente/vendas_style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Gerente-Cadastro-Fornecedor</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Padaria</div>
+            <ul class="links">
+                <li><a th:href="@{funcionarios}">Funcionários</a></li>
+                <li><a th:href="@{itens}">Itens</a></li>
+                <li><a th:href="@{fornecedores}">Fornecedores</a></li>
+                <li><a th:href="@{vendas}">Vendas</a></li>
+            </ul>
+            <li><a href="sair" class="action_btn"><i class='bx bx-log-out'></i> Sair</a></li>
+        </div>
+    </header>
+
+    <div>
+        <form action="#" method="post" th:action="@{register-distributor}" th:object="${distributor}">
+            <div>
+                <input type="text" th:field="*{name}" placeholder="Nome do fornecedor">
+            </div>
+            <div>
+                <input type="text" th:field="*{email}" placeholder="Email do fornecedor">
+            </div>
+            <div>
+                <input type="text" th:field="*{cellphone}" placeholder="Celular do fornecedor">
+            </div>
+            <div>
+                <input type="text" th:field="*{phone}" placeholder="Telefone do fornecedor">
+            </div>
+
+            <div><button type="submit">Registrar</button></div>
+        </form>
+    </div>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+                ? 'bx bx-x'
+                : 'bx bx-menu'
+        }
+    </script>
+</body>
+</html>

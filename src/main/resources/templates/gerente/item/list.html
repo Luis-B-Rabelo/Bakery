@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/gerente/vendas_style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Gerente-Itens</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Padaria</div>
+            <ul class="links">
+                <li><a th:href="@{cadastrar-item}">Cadastrar</a></li>
+                <li><a th:href="@{funcionarios}">Funcionários</a></li>
+                <li><a th:href="@{itens}">Itens</a></li>
+                <li><a th:href="@{fornecedores}">Fornecedores</a></li>
+                <li><a th:href="@{vendas}">Vendas</a></li>
+            </ul>
+            <li><a href="sair" class="action_btn"><i class='bx bx-log-out'></i> Sair</a></li>
+        </div>
+    </header>
+
+    <div>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Tipo</th>
+                <th>Preço unitário</th>
+                <th>Quantidade</th>
+                <th>Id do Fornecedor</th>
+            </tr>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.type}"></td>
+                <td th:text="${item.unitPrice}"></td>
+                <td th:text="${item.quantity}"></td>
+                <td th:text="${item.distributorId}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

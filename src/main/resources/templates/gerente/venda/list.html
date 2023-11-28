@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/gerente/vendas_style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Gerente-Vendas</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Padaria</div>
+            <ul class="links">
+                <li><a th:href="@{funcionarios}">Funcionários</a></li>
+                <li><a th:href="@{itens}">Itens</a></li>
+                <li><a th:href="@{fornecedores}">Fornecedores</a></li>
+                <li><a th:href="@{vendas}">Vendas</a></li>
+            </ul>
+            <li><a href="sair" class="action_btn"><i class='bx bx-log-out'></i> Sair</a></li>
+        </div>
+    </header>
+
+    <div>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Id do caixa</th>
+                <th>Preço total</th>
+                <th>Tipo de pagamento</th>
+                <th>Data</th>
+                <th>Hora</th>
+            </tr>
+            <tr th:each="sale :${sales}">
+                <td th:text="${sale.id}"></td>
+                <td th:text="${sale.cashierId}"></td>
+                <td th:text="${sale.totalPrice}"></td>
+                <td th:if="${sale.paymentType == 1}">Dinheiro</td>
+                <td th:if="${sale.paymentType == 2}">Pix</td>
+                <td th:if="${sale.paymentType == 3}">Débito</td>
+                <td th:text="${sale.date}"></td>
+                <td th:text="${sale.time}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

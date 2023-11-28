@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html  lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login/login_style.css">
+    <title>Padaria</title>
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="loginbox">
+            <h2>Login</h2>
+            <form action="#" th:action="@{/login}" th:object="${login}" method="post">
+
+                <label id="labelForm" for="id">ID</label>
+                <input type="text" placeholder="Insira seu ID" class="campo" th:field="*{id}" required>
+
+                <label id="labelForm" for="password">Senha</label>
+                <input type="password" placeholder="Insira sua senha" class="campo" th:field="*{password}" required>
+
+                <button type="submit" class="btn" onclick="alertarLogin()">Entrar</button>
+            </form>
+
+            <script>
+
+                function alertarLogin() { window.alert("Seja bem-vindo!") }
+            </script>
+
+        </div>
+    </div>
+</body>
+
+</html>
